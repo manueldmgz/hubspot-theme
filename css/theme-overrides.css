@@ -771,3 +771,16 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "acumin-variable", sans-serif;
   font-variation-settings: "slnt" 0, "wdth" 100, "wght" 700;
 }
+
+body,
+p {
+  color: #1E0604;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1E0604;
+}
+
+a {
+  color: #1E0604;
+}
