@@ -1,6 +1,6 @@
 {
     "files.associations": {
         "*.html": "html-hubl",
-        "*.css": "hubl"
+        "*.css": "css-hubl"
     }
 }

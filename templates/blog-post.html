@@ -15,6 +15,7 @@
   <div class="content-wrapper">
     <article class="blog-post">
       <h1>{{ content.name|sanitize_html }}</h1>
+      
       <div class="blog-post__meta">
         <a href="{{ blog_author_url(group.id, content.blog_post_author.slug)|escape_url }}" rel="author">
           {{ content.blog_post_author.display_name|escape_html }}
@@ -23,6 +24,8 @@
           {{ content.publish_date_localized|escape_html }}
         </time>
       </div>
+
+
       <div class="blog-post__body">
         {{ content.post_body }}{# escaped elsewhere #}
       </div>
