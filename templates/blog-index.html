@@ -1,72 +1,110 @@
 <!--
   templateType: blog_listing
   isAvailableForNewContent: true
-  label: Boilerplate - blog listing
+  label: CRW - blog listing
   screenshotPath: ../images/template-previews/blog-index.png
 -->
 {% set template_css = "../../css/templates/blog.css" %}
 {% extends "./layouts/base.html" %}
 
+{# Hide the normal global website header for this template #}
+{% block header %}
+{% endblock header %}
+
 {% block body %}
-{% dnd_area "dnd_area"
-  label="Main section",
-  class="body-container body-container--blog-index"
-%}
+<div class="body-container body-container--blog-index crw-blog-index">
 
-  {# Hero banner #}
+  <section class="crw-index-hero" aria-label="Blog">
+    <div class="content-wrapper crw-index-hero__inner">
 
-  {% dnd_section
-    background_color="#f8fafc",
-    max_width=600,
-    padding={
-      "default": {
-        "top": 80,
-        "right": 0,
-        "bottom": 80,
-        "left": 0
-      },
-      "mobile": {
-        "top": 80,
-        "right": 20,
-        "bottom": 80,
-        "left": 20
-      }
-    }
-  %}
-    {% dnd_column %}
-      {% dnd_row %}
-        {% dnd_module
-          path="@hubspot/rich_text",
-          html='<div style="text-align: center;"><h1>Blog</h1><p>Use this space to tell everyone about what you have to offer.</p></div>'
+      <a class="crw-index-hero__logo" href="https://www.crwannamakerlaw.com/">
+        <img
+          src="{{ get_asset_url('../images/crw-logo.png') }}"
+          alt="C.R. Wannamaker Law PLLC"
+        >
+      </a>
+
+      <div class="crw-index-hero__title">Blog</div>
+
+    </div>
+  </section>
+
+  <main class="crw-index-main">
+    <div class="content-wrapper crw-index-main__inner">
+
+      {% if blog_author %}
+        <h1 class="crw-index-page-title">
+          Posts by {{ blog_author.display_name|escape_html }}
+        </h1>
+      {% elif tag %}
+        <h1 class="crw-index-page-title">
+          Posts about {{ page_meta.html_title|split(" | ")|last|escape_html }}
+        </h1>
+      {% endif %}
+
+      <section class="crw-index-grid" aria-label="Blog posts">
+
+        {% for content in contents %}
+          <article class="crw-index-card">
+
+            <a class="crw-index-card__image-link" href="{{ content.absolute_url|escape_url }}" aria-label="Read: {{ content.name|escape_attr }}">
+
+              {% if content.featured_image %}
+                <img
+                  class="crw-index-card__image"
+                  src="{{ content.featured_image|escape_url }}"
+                  alt="{{ content.featured_image_alt_text|default(content.name)|escape_attr }}"
+                  loading="lazy"
+                >
+              {% endif %}
+
+              <time class="crw-index-card__date" datetime="{{ content.publish_date|escape_attr }}">
+                {{ content.publish_date_localized|escape_html }}
+              </time>
+
+            </a>
+
+            <div class="crw-index-card__content">
+              <h2 class="crw-index-card__title">
+                <a href="{{ content.absolute_url|escape_url }}">
+                  {{ content.name|sanitize_html }}
+                </a>
+              </h2>
+
+              <div class="crw-index-card__summary">
+                {% if content.post_summary %}
+                  {{ content.post_summary|truncatehtml(105)|sanitize_html("STRIP") }}
+                {% elif content.meta_description %}
+                  {{ content.meta_description|escape_html }}
+                {% endif %}
+              </div>
+            </div>
+
+          </article>
+        {% endfor %}
+
+      </section>
+
+      <div class="crw-index-pagination">
+        {% module "blog_pagination"
+          path="@hubspot/pagination"
         %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-      {% dnd_row %}
-        {% dnd_module
-          path="@hubspot/blog_subscribe",
-          title=""
-        %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-    {% end_dnd_column %}
-  {% end_dnd_section %}
+      </div>
 
-  {# Blog listings and pagination #}
+      <footer class="crw-index-footer">
+        <nav class="crw-index-social" aria-label="Social links">
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="Facebook">f</a>
+        </nav>
 
-  {% dnd_section
-    vertical_alignment="TOP"
-  %}
-    {% dnd_column %}
-      {% dnd_row %}
-        {% dnd_module path="@hubspot/blog_posts" %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-      {% dnd_row %}
-        {% dnd_module path="@hubspot/pagination" %}
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-    {% end_dnd_column %}
-  {% end_dnd_section %}
+        <a class="crw-index-cta" href="tel:9152095910">
+          Llámanos (915) 209-5910
+        </a>
+      </footer>
 
-{% end_dnd_area %}
+    </div>
+  </main>
+
+</div>
 {% endblock body %}
