@@ -143,6 +143,11 @@
   letter-spacing: -0.055em;
 }
 
+.crw-index-social__link {
+  width: 85px;
+  height: 85px;
+}
+
 /* Main */
 
 .crw-index-main {
