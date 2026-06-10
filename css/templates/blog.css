@@ -111,28 +111,20 @@
 /* Hero */
 
 .crw-index-hero {
-  min-height: 177px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(44, 32, 29, 0.96) 0%,
-      rgba(44, 32, 29, 0.72) 45%,
-      rgba(44, 32, 29, 0.96) 100%
-    ),
-    url('{{ get_asset_url("/images/blog-hero-bg.png") }}') center center / cover no-repeat;
+  height: clamp(177px, 17.5vw, 252px);
+  background: url('{{ get_asset_url("/images/blog-hero-bg2.png") }}') center center / cover no-repeat;
 }
 
 .crw-index-hero__inner {
-  min-height: 177px;
   display: flex;
   align-items: center;
   gap: 28px;
-  height: clamp(150px, 17.5vw, 252px);
+
 }
 
 .crw-index-hero__logo img {
   display: block;
-  width: 98px;
+  width: 187px;
   height: auto;
 }
 
