@@ -72,10 +72,11 @@
               </h2>
 
               <div class="crw-index-card__summary">
-                {% if content.post_summary %}
-                  {{ content.post_summary|truncatehtml(105)|sanitize_html("STRIP") }}
+                {% set card_summary = content.post_summary|striptags|trim %}
+                {% if card_summary %}
+                  {{ card_summary|truncate(105)|escape_html }}
                 {% elif content.meta_description %}
-                  {{ content.meta_description|escape_html }}
+                  {{ content.meta_description|truncate(105)|escape_html }}
                 {% endif %}
               </div>
             </div>
