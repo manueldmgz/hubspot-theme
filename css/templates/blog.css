@@ -132,7 +132,6 @@
   padding: 0 clamp(35px, 8.6vw, 124px)
 }
 
-
 /* .crw-index-hero__inner {
   display: flex;
   align-items: center;
@@ -157,11 +156,9 @@
   display: block;
   width: 56px;
   height: 56px;
-  background: var(--white);
 }
 
 /* Main */
-
 .crw-index-main {
     background: var(--cream);
     flex: 1 0 auto;
@@ -215,6 +212,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 0%;
 }
 
 .crw-index-card__date {
@@ -277,14 +275,14 @@
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  margin-top: 28px;
+  margin-top: 72px;
   padding: 0 12px;
 }
 
 .crw-index-social {
   display: flex;
   align-items: center;
-  gap: 38px;
+  gap: 42px;
 }
 
 .crw-index-social a {
@@ -308,15 +306,17 @@
   min-height: 43px;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  padding: 0.5em 1.1em;
+  box-shadow: 0 10px 22px rgba(44, 32, 29, 0.2);
   border-radius: 36px;
-  background: var(--blue);
+  background: var(--blue, #B5E4EA);
   color: var(--licorice);
   font-size: 29px;
-  line-height: 1.1;
-  font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 10px 22px rgba(44, 32, 29, 0.2);
+  width: 29.25rem;
+  inline-size: 100%;
+  max-width: 480px;
+  font-weight: 600;
 }
 
 .crw-index-cta:hover,
@@ -324,7 +324,9 @@
   /* transform: scale(1.05); */
 }
 
-/* Responsive */
+/* =========================================================
+RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 1250px) {
   .crw-index-main .crw-index-main__inner {
