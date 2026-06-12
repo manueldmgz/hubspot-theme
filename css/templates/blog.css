@@ -108,15 +108,20 @@
   display: flex;
   flex-direction: column;
   font-family: "filson-pro", sans-serif;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
+}
+
+.crw-blog-index,
+.crw-blog-index *,
+.crw-blog-index *::before,
+.crw-blog-index *::after {
+  box-sizing: border-box;
 }
 
 /* Hero */
 
 .crw-index-hero {
-  height: clamp(177px, 17.5vw, 252px);
+  /* height: clamp(177px, 17.5vw, 252px); */
   height: clamp(210px, 20.9vw, 268px);
   background: url({{ get_asset_url("/images/blog-hero-bg.png") }}) center center / cover no-repeat;
 }
@@ -185,6 +190,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 361px));
   justify-content: space-between;
+  align-items: stretch;
   gap: 40px 48px;
 }
 
@@ -193,14 +199,18 @@
   border-radius: 32px;
   background: var(--cocoa-brown);
   color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 435px;
   width: 100%;
-  height: 437px;
+  /* height: 437px; */
   box-shadow: 0 14px 24px rgba(44, 32, 29, 0.12);
 }
 
 .crw-index-card__image-link {
   position: relative;
   display: block;
+  flex: 0 0 218px;
   height: 218px;
   overflow: hidden;
   color: var(--cream);
@@ -227,6 +237,10 @@
 }
 
 .crw-index-card__content {
+  sdisplay: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
   padding: 13px 18px 18px;
 }
 
@@ -238,19 +252,27 @@
   font-weight: 800;
   letter-spacing: 0;
   text-transform: none;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .crw-index-card__title a {
+  display: block;
   color: inherit;
   text-decoration: none;
 }
 
 .crw-index-card__summary {
   color: #fff4e7;
-  font-size: 9px;
   line-height: 1.15;
   font-weight: 400;
   font-size: 18px;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .crw-index-card__summary p {
@@ -302,21 +324,21 @@
 
 .crw-index-cta {
   display: inline-flex;
+  align-items: center;
   min-width: 230px;
   min-height: 43px;
-  align-items: center;
   justify-content: center;
   padding: 0.5em 1.1em;
-  box-shadow: 0 10px 22px rgba(44, 32, 29, 0.2);
   border-radius: 36px;
   background: var(--blue, #B5E4EA);
   color: var(--licorice);
   font-size: 29px;
-  text-decoration: none;
   width: 29.25rem;
-  inline-size: 100%;
+  /* inline-size: 100%; */
   max-width: 480px;
   font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(44, 32, 29, 0.2);
 }
 
 .crw-index-cta:hover,
@@ -334,14 +356,61 @@ RESPONSIVE
   }
 }
 
+@media (max-width: 1100px) {
+  .crw-index-grid {
+    gap: 34px 32px;
+  }
+
+  .crw-index-card {
+    min-height: 418px;
+  }
+
+  .crw-index-card__image-link {
+    flex-basis: 202px;
+    height: 202px;
+  }
+
+  .crw-index-card__content {
+    padding: 13px 16px 18px;
+  }
+
+  .crw-index-card__title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .crw-index-card__summary {
+    font-size: 19px;
+  }
+}
+
 @media (max-width: 900px) {
   .crw-index-main .crw-index-main__inner {
+    width: calc(100% - 48px);
     padding-top: 56px;
   }
 
   .crw-index-grid {
     grid-template-columns: repeat(2, minmax(0, 361px));
     justify-content: center;
+  }
+
+  .crw-index-card {
+    min-height: 408px;
+  }
+
+  .crw-index-card__image-link {
+    flex-basis: 196px;
+    height: 196px;
+  }
+
+  .crw-index-card__title {
+    font-size: 21px;
+  }
+
+  .crw-index-card__summary {
+    font-size: 18px;
+    line-height: 1.2;
   }
 
   .crw-index-footer {
@@ -352,6 +421,34 @@ RESPONSIVE
 
   .crw-index-cta {
     width: min(100%, 468px);
+  }
+}
+
+@media (max-width: 760px) {
+  .crw-index-main .crw-index-main__inner {
+    padding-top: 46px;
+  }
+
+  .crw-index-grid {
+    grid-template-columns: minmax(0, 420px);
+    gap: 30px;
+  }
+
+  .crw-index-card {
+    min-height: 0;
+  }
+
+  .crw-index-card__image-link {
+    flex-basis: 210px;
+    height: 210px;
+  }
+
+  .crw-index-card__title {
+    font-size: 22px;
+  }
+
+  .crw-index-card__summary {
+    font-size: 18px;
   }
 }
 
@@ -380,15 +477,17 @@ RESPONSIVE
 
   .crw-index-grid {
     grid-template-columns: 1fr;
+    gap: 26px;
   }
 
   .crw-index-card {
-    height: auto;
+    /* height: auto; */
     min-height: 0;
   }
 
   .crw-index-card__image-link {
     height: 180px;
+    flex-basis: 180px;
   }
 
   .crw-index-card__date {
