@@ -193,11 +193,11 @@ a {
   color: {{ anchor_font.color }};
 }
 
-a:hover,
+/* a:hover,
 a:focus {
   {{ anchor_font.style }};
   color: {{ color_variant(anchor_font.color, -40) }};
-}
+} */
 
 a:active {
   {{ anchor_font.style }};

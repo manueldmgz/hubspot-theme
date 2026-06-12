@@ -85,8 +85,8 @@
 
 .blog-comments .comment-reply-to:hover,
 .blog-comments .comment-reply-to:focus {
-  background-color: transparent;
-  text-decoration: underline;
+  /* background-color: transparent;
+  text-decoration: underline; */
 }
 
 /* =========================================================
@@ -150,7 +150,7 @@
   font-size: clamp(76px, 11vw, 148px);
   line-height: 0.9;
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.035em;
 }
 
 .crw-index-social__link {
@@ -225,7 +225,7 @@
   color: var(--cream);
   font-size: 23px;
   line-height: 1.1;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .crw-index-card__content {
@@ -321,8 +321,7 @@
 
 .crw-index-cta:hover,
 .crw-index-cta:focus {
-  color: var(--licorice);
-  text-decoration: none;
+  /* transform: scale(1.05); */
 }
 
 /* Responsive */
